@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caderno pessoal de gramática japonesa baseado nas lições 9 a 18 do Marugoto Plus A2.">
+<title>Caderno de japonês · Marugoto A2</title>
+<style>
+:root {
+  color-scheme: light;
+  --ink:#24291f; --sub:#53594f; --line:#d9dbcd; --paper:#fffef8; --ground:#f2f2e8;
+  --accent:#32533c; --pale:#e7edde; --rust:#93442f; --serif:Georgia,"Noto Serif CJK JP",serif;
+  --jp:"Noto Sans CJK JP","Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;line-height:1.5}
+button,select,input{font:inherit}
+a{color:var(--accent);text-underline-offset:.2em}
+small,.muted{color:var(--sub)}
+button{cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
+.skip{position:fixed;top:-5rem;left:1rem;z-index:10;padding:1rem;background:var(--paper)}
+.skip:focus{top:1rem}
+.layout{max-width:1520px;margin:auto;display:grid;grid-template-columns:254px minmax(0,1fr);min-height:100vh}
+.sidebar{background:#e9ecdf;border-right:1px solid var(--line);padding:29px 20px;display:flex;flex-direction:column;gap:30px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750;font-size:.95rem;line-height:1.2}
+.brand small{display:block;font-size:.62rem;letter-spacing:.11em;margin-top:7px}
+.seal{background:var(--accent);color:white;width:39px;height:42px;flex:0 0 39px;display:grid;place-content:center;border-radius:6px 6px 12px 6px;font:1.33rem var(--jp)}
+.global-nav,.topic-nav{display:grid;gap:4px}
+.nav-link{color:var(--ink);text-decoration:none;padding:8px 10px;border-radius:7px;display:flex;align-items:center;gap:10px;min-height:42px;font-size:.88rem;font-weight:620}
+.nav-link:hover,.nav-link[aria-current=page]{background:#dce5d3;color:#264b32}
+.nav-link[aria-current=page]{box-shadow:inset 3px 0 var(--accent)}
+.nav-link .num{color:var(--accent);font-variant-numeric:tabular-nums;flex:none}
+.nav-link .active-count{margin-left:auto;font-size:.75rem;color:var(--sub)}
+.nav-label,.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:760;color:var(--accent);margin:22px 0 8px}
+.sidebar-progress{margin-top:auto;border-top:1px solid #ced5c5;padding-top:14px;font-size:.8rem}
+progress{width:100%;height:8px;accent-color:var(--accent);border:0;border-radius:9px;display:block;margin-top:9px;background:#d5dccd}
+progress::-webkit-progress-bar{background:#d5dccd;border-radius:9px}
+progress::-webkit-progress-value{background:var(--accent);border-radius:9px}
+main{width:min(100%,1140px);margin-inline:auto;padding:38px clamp(22px,4.4vw,68px) 46px;outline:none}
+h1,h2,h3,p{margin-top:0}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.06}
+h1{font-size:clamp(2.2rem,5.6vw,4.9rem);letter-spacing:-.05em;margin-bottom:13px}
+h2{font-size:clamp(1.55rem,3.5vw,2.35rem);letter-spacing:-.026em;margin-bottom:12px}
+h3{font-size:1.04rem;margin-bottom:5px}
+p{margin-bottom:12px}
+.hero{background:var(--accent);color:#fffef5;border-radius:15px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;padding:clamp(25px,4vw,50px);margin-bottom:28px}
+.hero .eyebrow,.hero .muted{color:#e3eddf;margin-top:0}
+.hero p{max-width:48ch;margin-bottom:20px}
+.hero-side{display:grid;place-content:center;text-align:center;align-self:stretch;border-left:1px solid #8fa693;padding-left:clamp(14px,3.4vw,38px);color:#e0e9da;font:clamp(2rem,5vw,4.5rem) var(--jp)}
+.hero-side small{font:700 .68rem system-ui,sans-serif;color:#e3eddf;letter-spacing:.14em;display:block;margin-top:8px}
+.buttons,.chips,.tabs,.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.btn,.chip{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);min-height:43px;padding:8px 14px;text-decoration:none;font-weight:670;font-size:.9rem}
+.btn:hover,.chip:hover{background:var(--pale)}
+.primary,.chip[aria-pressed=true]{background:var(--accent);color:white;border-color:var(--accent)}
+.primary:hover,.chip[aria-pressed=true]:hover{background:#25432e;color:white}
+.hero .primary{background:#f7f8eb;color:#25432e;border-color:#f7f8eb}
+.hero .primary:hover{background:#dce8d7}
+.hero .outline{background:transparent;color:white;border-color:#9fba9e}
+.hero .outline:hover{background:#42654c}
+.section-head{display:flex;gap:15px;justify-content:space-between;align-items:baseline;margin:18px 0 9px}
+.section-head small{text-align:right}
+.topic-list{display:grid;gap:9px}
+.topic-row{display:grid;grid-template-columns:49px minmax(0,1fr) minmax(76px,auto) 20px;gap:14px;align-items:center;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 15px;text-decoration:none;min-height:69px}
+.topic-row:hover{border-color:#7b967d;background:#fbfdf3}
+.topic-row strong{display:block}
+.topic-row .metric{text-align:right;font-size:.8rem}
+.tile{background:var(--pale);color:var(--accent);width:43px;height:41px;border-radius:7px;font:.97rem var(--jp);display:grid;place-content:center}
+.page-head{padding:4px 0 16px}
+.page-head .eyebrow{margin-top:0}
+.page-head h1{font-size:clamp(2.2rem,5vw,4.15rem)}
+.jp{font-family:var(--jp);overflow-wrap:anywhere}
+ruby{ruby-position:under}
+rt{font-size:.64em;font-weight:400;opacity:.68}
+.hero-side rt{font-size:.31em}
+.tabs{border-bottom:1px solid var(--line);margin:0 0 22px;gap:5px}
+.tab{border-radius:7px 7px 0 0;font-weight:700;padding:10px 13px;color:var(--sub);text-decoration:none}
+.tab[aria-current=page]{box-shadow:inset 0 -3px var(--accent);color:var(--accent);background:var(--pale)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,3.5vw,30px);margin:12px 0}
+.card .eyebrow{margin-top:0}
+.lesson{margin-top:26px}
+.lesson-title{display:flex;gap:14px;align-items:baseline;justify-content:space-between}
+.lesson-title a,.sources a{font-size:.83rem}
+.rule{padding:0;overflow:hidden}
+.rule-tone-0{background:#f7f9ee;border-color:#d9dfcc}
+.rule-tone-1{background:#faf5e9;border-color:#e5dcc9}
+.rule-tone-2{background:#eef4f2;border-color:#d5e0dc}
+.rule-tone-3{background:#f8f0ee;border-color:#e8d9d4}
+.rule summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;cursor:pointer;padding:14px 18px;align-items:center;list-style:none}
+.rule summary::-webkit-details-marker{display:none}
+.rule summary::after{content:"+";color:var(--accent);font-size:1.18rem}
+.rule[open] summary::after{content:"−"}
+.rule summary strong{display:block}
+.rule summary span.jp{color:var(--accent)}
+.rule-body{padding:0 18px 17px}
+.example{border-left:2px solid #a9b99f;padding:4px 0 4px 12px;margin:10px 0}
+.example small{display:block}
+.prompt{font-size:clamp(1.25rem,3.2vw,1.8rem);line-height:1.55;margin-bottom:12px;white-space:pre-wrap}
+.options{display:grid;gap:8px;margin:16px 0}
+.option{text-align:left;justify-content:flex-start;min-height:47px}
+.option.correct{border-color:#639267;background:#e3efdf}
+.option.wrong{border-color:#a86450;background:#f7e7df}
+.feedback{padding:12px 14px;margin:0 0 12px;border:1px solid #acc7a7;border-radius:8px;background:#e7f0e3}
+.feedback.bad{border-color:#d39a89;background:#f8eae3}
+.feedback strong{display:block}
+.feedback p{margin:4px 0 0}
+.feedback .short{font-size:.87rem}
+.sequence{border:1px dashed #a6ad9f;border-radius:8px;min-height:61px;padding:8px;margin:12px 0}
+.tokens{margin:12px 0}
+.answer-input{background:#fff;width:100%;min-height:46px;border:1px solid #a8ae9f;border-radius:8px;padding:8px 12px;margin:4px 0 12px;color:var(--ink)}
+label.filter{display:flex;align-items:center;gap:7px;min-height:42px;font-size:.88rem}
+select{max-width:100%;background:var(--paper);color:var(--ink);border:1px solid #a7afa0;border-radius:7px;padding:7px 9px}
+.exercise-progress{margin:6px 0 14px}
+.exercise-track{display:flex;gap:2px;border:1px solid #d3d7c9;padding:3px;border-radius:8px;background:#fafaf3}
+.exercise-track .segment{flex:1;min-width:0;height:10px;border-radius:2px;background:#dde1d6}
+.exercise-track .correct{background:#3f744b}
+.exercise-track .incorrect{background:#af523e}
+.exercise-counts{font-size:.86rem;margin:5px 0 0}
+.memory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.pair-column{display:grid;grid-template-rows:auto repeat(4,1fr);gap:8px;min-width:0}
+.pair-column h3{margin:0;font-size:.86rem;color:var(--sub)}
+.memory-tile{min-height:64px;padding:9px;text-align:left;justify-content:flex-start;font-size:.88rem;line-height:1.55;overflow-wrap:anywhere;width:100%}
+.memory-tile.selected{border-color:#567b61;background:#dce8da;box-shadow:inset 0 0 0 1px #567b61}
+.memory-tile.matched{background:#e4efdf;border-color:#aac3a7;color:#25432e}
+.memory-tile.miss{border-color:#b8725e;background:#f8eae3}
+.sources{display:flex;flex-wrap:wrap;gap:8px 17px;border-top:1px solid var(--line);margin-top:24px;padding-top:13px}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.summary-grid div{border:1px solid var(--line);padding:12px;background:var(--paper);border-radius:8px}
+.summary-grid strong{display:block;font:1.65rem var(--serif)}
+.status{min-height:1.5em}
+@media(max-width:820px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;height:auto;gap:11px;padding:13px 16px;border-right:0;border-bottom:1px solid var(--line)}
+  .sidebar nav{display:grid;gap:6px}
+  .nav-label,.sidebar-progress{display:none}
+  .global-nav,.topic-nav{display:flex;flex-wrap:wrap;gap:3px}
+  .topic-nav .topic-text{display:none}
+  .global-nav .nav-link,.topic-nav .nav-link{font-size:.8rem;min-height:37px;padding:5px 9px}
+  main{padding-top:20px}
+}
+@media(max-width:520px){
+  .hero{grid-template-columns:1fr;gap:0}
+  .hero-side{display:none}
+  .topic-row{grid-template-columns:36px minmax(0,1fr) auto;gap:8px;padding:10px}
+  .tile{width:34px;height:34px}
+  .topic-row .arrow{display:none}
+  .topic-row .metric{max-width:78px}
+  .memory-grid{gap:8px}
+  .memory-tile{font-size:.79rem;padding:7px}
+  .lesson-title{flex-wrap:wrap;gap:0}
+  .summary-grid div{padding:8px;font-size:.8rem}
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir para o conteúdo</a>
+<div class="layout">
+<aside class="sidebar">
+  <header class="brand"><span lang="ja" class="seal" aria-hidden="true"><ruby>文<rt>ぶん</rt></ruby></span><div>Caderno de japonês<small>MARUGOTO PLUS · A2</small></div></header>
+  <nav aria-label="Navegação do caderno">
+    <div id="global-nav" class="global-nav"></div>
+    <p class="nav-label">Tópicos de estudo</p>
+    <div id="topic-nav" class="topic-nav"></div>
+  </nav>
+  <div class="sidebar-progress" id="sidebar-progress"></div>
+</aside>
+<main id="main" tabindex="-1"></main>
+</div>
+<script>
+const RULES = [{"id": 1, "lesson": 9, "topic": 5, "pattern": "は・が", "name": "Descrever um aspecto", "note": "Apresente o assunto com は e marque com が a parte que recebe o adjetivo. Em português, essa parte costuma vir com “de”.", "examples": [["英語は ぶんぽうが かんたんです。", "A gramática do inglês é fácil.", true], ["スペイン語は ぶんぽうが むずかしいです。", "A gramática do espanhol é difícil.", false]], "gap": "中国語は はつおん{が} かんたんです。", "ja": "中国語は はつおんが かんたんです。", "pt": "A pronúncia do chinês é fácil.", "answer": "が", "wrong": ["を", "で"], "why": "が marca o aspecto descrito, aqui はつおん."}, {"id": 2, "lesson": 9, "topic": 5, "pattern": "V辞書形＋のが", "name": "Avaliar uma atividade", "note": "Use a forma de dicionário seguida de のが para transformar a ação em algo que pode ser avaliado. Com とくい e にがて, você diz em que tem facilidade ou dificuldade.", "examples": [["スペイン語を 話すのが おもしろいです。", "Falar espanhol é interessante.", false], ["私は 日本語を 読むのが とくいです。", "Tenho facilidade para ler em japonês.", false]], "gap": "私は かんじを 書く{のが} にがてです。", "ja": "私は かんじを 書くのが にがてです。", "pt": "Tenho dificuldade para escrever kanji.", "answer": "のが", "wrong": ["ので", "のに"], "why": "の transforma 書く em atividade. が liga a atividade a にがて."}, {"id": 3, "lesson": 9, "topic": 5, "pattern": "Vて＋くださいませんか", "name": "Pedir um favor com cortesia", "note": "Acrescente くださいませんか à forma て do verbo para perguntar com cortesia se a outra pessoa pode fazer algo.", "examples": [["この じしょを 貸して くださいませんか。", "Poderia me emprestar este dicionário?", false], ["この ことばを 読んで くださいませんか。", "Poderia ler esta palavra?", false]], "gap": "この かんじを {書いて} くださいませんか。", "ja": "この かんじを 書いて くださいませんか。", "pt": "Poderia escrever este kanji?", "answer": "書いて", "wrong": ["書く", "書きます"], "why": "くださいませんか vem após a forma て. 書く vira 書いて."}, {"id": 4, "lesson": 9, "topic": 5, "pattern": "Vます → Vかた", "name": "Explicar como fazer", "note": "Retire ます e acrescente かた. Como o resultado é um substantivo, o objeto da ação pode aparecer antes de の, como em かんじの 読みかた.", "examples": [["この かんじの 読みかたが わかりません。", "Não sei como ler este kanji.", true], ["この ことばの 書きかたが わかりません。", "Não sei como escrever esta palavra.", false]], "gap": "この かんじの {書きかた}を おしえて ください。", "ja": "この かんじの 書きかたを おしえて ください。", "pt": "Ensine-me a escrever este kanji, por favor.", "answer": "書きかた", "wrong": ["書くかた", "書いてかた"], "why": "Para dizer “modo de escrever”, retire ます de 書きます e acrescente かた."}, {"id": 5, "lesson": 10, "topic": 5, "pattern": "Vたい・Vたくない", "name": "Dizer o que você quer fazer", "note": "Retire ます e acrescente たい para dizer que quer fazer algo. Use たくない para dizer que não quer. Em perguntas, a construção pode perguntar pelo desejo do interlocutor.", "examples": [["いつか ほっかいどうに 行きたいです。", "Quero ir a Hokkaido algum dia.", true], ["日本の マンガを 読みたくないです。", "Não quero ler mangá japonês.", false]], "gap": "しょうらい ほんやくの 仕事を {したい}です。", "ja": "しょうらい ほんやくの 仕事を したいです。", "pt": "Quero trabalhar com tradução no futuro.", "answer": "したい", "wrong": ["しますたい", "するたい"], "why": "A forma ensinada é します sem ます + たい, resultando em したい."}, {"id": 6, "lesson": 10, "topic": 5, "pattern": "Período＋に＋～回", "name": "Falar de frequência", "note": "Marque o intervalo com に e conte quantas vezes com 回（かい）. Após a contagem, ぐらい indica aproximação.", "examples": [["週に １回 スペイン語を べんきょうしています。", "Estudo espanhol uma vez por semana.", false], ["１か月に ２回ぐらい 日本語を ならっています。", "Faço aulas de japonês cerca de duas vezes por mês.", false]], "gap": "１年{に} １回 外国に 行きます。", "ja": "１年に １回 外国に 行きます。", "pt": "Vou ao exterior uma vez por ano.", "answer": "に", "wrong": ["を", "の"], "why": "O primeiro に marca o intervalo usado para contar a frequência."}, {"id": 7, "lesson": 10, "topic": 5, "pattern": "Vて＋みます", "name": "Experimentar uma ação", "note": "Use a forma て seguida de みます para fazer algo a fim de ver como é ou como sai. Com みたい, você expressa vontade de experimentar.", "examples": [["この 本を 読んで みます。", "Vou experimentar ler este livro.", true], ["日本語で マンガを 読んで みたいです。", "Quero tentar ler mangá em japonês.", false]], "gap": "日本人と 英語で {話して} みます。", "ja": "日本人と 英語で 話して みます。", "pt": "Vou tentar conversar com um japonês em inglês.", "answer": "話して", "wrong": ["話す", "話した"], "why": "A base de てみます é a forma て. 話す vira 話して."}, {"id": 8, "lesson": 10, "topic": 5, "pattern": "Vましょうか", "name": "Oferecer ajuda", "note": "Troque ます por ましょうか para oferecer uma ação. Quando a ação inclui o interlocutor, a mesma forma pode fazer uma sugestão conjunta.", "examples": [["その かんじを 書きましょうか。", "Quer que eu escreva esse kanji?", false], ["いっしょに 日本語を べんきょうしましょうか。", "Vamos estudar japonês juntos?", false]], "gap": "この ことばの いみを {おしえましょうか}。", "ja": "この ことばの いみを おしえましょうか。", "pt": "Quer que eu explique o significado desta palavra?", "answer": "おしえましょうか", "wrong": ["おしえますか", "おしえません"], "why": "ましょうか apresenta a ação como oferta. ますか faria uma pergunta comum."}, {"id": 9, "lesson": 11, "topic": 6, "pattern": "Vて＋行きます・来ます", "name": "Levar e trazer", "note": "行きます indica movimento para longe do ponto de referência e 来ます indica movimento em direção a ele. No contexto do piquenique, 持って descreve o que você leva ou traz.", "examples": [["ピクニックに おにぎりを 持っていきます。", "Vou levar onigiri ao piquenique.", true], ["ピクニックに ジュースを 持ってきました。", "Trouxe suco para o piquenique.", false]], "gap": "ピクニックに サンドイッチを {持って}いきます。", "ja": "ピクニックに サンドイッチを 持っていきます。", "pt": "Vou levar sanduíches ao piquenique.", "answer": "持って", "wrong": ["持つ", "持った"], "why": "Use 持って antes do verbo de movimento para dizer o que leva."}, {"id": 10, "lesson": 11, "topic": 6, "pattern": "Interrogativo＋でも", "name": "Dizer que qualquer opção serve", "note": "何でも é “qualquer coisa”, いつでも é “a qualquer hora ou dia”, どこでも é “em qualquer lugar” e いくつでも é “qualquer quantidade”.", "examples": [["飲み物は 何でも いいです。", "Qualquer bebida serve.", false], ["ピクニックの 日は いつでも いいです。", "Qualquer dia serve para o piquenique.", false]], "gap": "おにぎりは いくつ{でも} いいです。", "ja": "おにぎりは いくつでも いいです。", "pt": "Qualquer quantidade de onigiri serve.", "answer": "でも", "wrong": ["まで", "だけ"], "why": "でも após いくつ deixa a quantidade em aberto."}, {"id": 11, "lesson": 11, "topic": 6, "pattern": "NとN（と）、どちらが", "name": "Escolher entre duas opções", "note": "Use と para ligar as duas opções. O segundo と é opcional. Na pergunta, marque どちら com が e, ao responder, marque a opção escolhida com が.", "examples": [["お茶と ワインと どちらが いいですか。", "Qual você prefere, chá ou vinho?", false], ["私は ジュースが いいです。", "Eu prefiro suco.", false]], "gap": "おすしと おにぎりと、どちら{が} いいですか。", "ja": "おすしと おにぎりと、どちらが いいですか。", "pt": "Qual você prefere, sushi ou onigiri?", "answer": "が", "wrong": ["を", "に"], "why": "が marca a opção procurada pela pergunta どちらが いいですか."}, {"id": 12, "lesson": 12, "topic": 6, "pattern": "Adjetivo＋そう・そうな", "name": "Descrever a aparência", "note": "Retire o い final dos adjetivos em い e junte そう. Nos adjetivos em な, use a base sem な. いい vira よさそう. Antes do substantivo, use そうな.", "examples": [["その おすし、おいしそうですね。", "Esse sushi parece delicioso, né?", true], ["この りょうりは からそうです。", "Este prato parece apimentado.", false]], "gap": "あま{そうな} くだものですね。", "ja": "あまそうな くだものですね。", "pt": "É uma fruta que parece doce, né?", "answer": "そうな", "wrong": ["そうの", "そうで"], "why": "Use そうな quando o substantivo vem em seguida, aqui くだもの."}, {"id": 13, "lesson": 12, "topic": 6, "pattern": "～くて・～くなくて／～で・～じゃなくて", "name": "Ligar qualidades", "note": "Adjetivos em い passam a くて ou くなくて. Adjetivos em な recebem で ou じゃなくて. A primeira qualidade pode descrever o mesmo item ou explicar a reação que vem depois.", "examples": [["この お茶は あたたかくて、おいしいです。", "Este chá está quentinho e gostoso.", false], ["この りょうりは からくなくて、 おいしいです。", "Este prato é gostoso e sem ardência.", false]], "gap": "この くだものは {しんせんで}、あまいです。", "ja": "この くだものは しんせんで、あまいです。", "pt": "Esta fruta é fresca e doce.", "answer": "しんせんで", "wrong": ["しんせんくて", "しんせんなて"], "why": "しんせん é adjetivo em な. A ligação afirmativa usa で."}, {"id": 14, "lesson": 13, "topic": 7, "pattern": "Vた＋ことがあります", "name": "Falar de experiências", "note": "Use a forma た antes de ことがあります para falar de algo que já aconteceu alguma vez. ことがありません indica ausência dessa experiência.", "examples": [["日本に 行ったことが あります。", "Já fui ao Japão.", true], ["ホテルで 日本語を 話したことが あります。", "Já falei japonês em um hotel.", false]], "gap": "外国に にもつを {おくった}ことが ありません。", "ja": "外国に にもつを おくったことが ありません。", "pt": "Nunca enviei bagagem para o exterior.", "answer": "おくった", "wrong": ["おくる", "おくって"], "why": "Use a forma た antes de ことがあります ou ありません, mesmo na negativa."}, {"id": 15, "lesson": 13, "topic": 7, "pattern": "Adjetivo ou verbo＋すぎます", "name": "Expressar excesso", "note": "Tire o い final dos adjetivos em い ou use a base dos adjetivos em な. Para verbos, retire ます. Em todos os casos, junte すぎます.", "examples": [["この ホテルは しずかすぎます。", "Este hotel é silencioso demais.", false], ["きのう お茶を 飲みすぎました。", "Ontem bebi chá demais.", false]], "gap": "この へやは {あつすぎます}。", "ja": "この へやは あつすぎます。", "pt": "Este quarto é quente demais.", "answer": "あつすぎます", "wrong": ["あついすぎます", "あつくすぎます"], "why": "あつい perde o い final e recebe すぎます."}, {"id": 16, "lesson": 13, "topic": 7, "pattern": "Frase 1＋が、frase 2", "name": "Contrapor informações", "note": "Coloque が depois de uma oração completa, normalmente em estilo polido, para ligar uma segunda informação que contrasta com a primeira.", "examples": [["この ホテルは 古いですが、きれいです。", "Este hotel é antigo, mas é limpo.", true], ["この ホテルは 高いですが、べんりです。", "Este hotel é caro, mas é conveniente.", false]], "gap": "エアコンは あります{が}、こわれています。", "ja": "エアコンは ありますが、こわれています。", "pt": "Tem ar-condicionado, mas está quebrado.", "answer": "が", "wrong": ["から", "と"], "why": "が liga a existência do aparelho à informação que contrasta com ela."}, {"id": 17, "lesson": 14, "topic": 7, "pattern": "Vて＋duração＋になります", "name": "Dizer quanto tempo passou", "note": "Use o acontecimento inicial na forma て. Em seguida, duração + になります informa quanto tempo se passou desde esse marco.", "examples": [["日本に 来て ３か月に なります。", "Faz três meses que vim ao Japão.", true], ["この 会社に 入って ３年に なります。", "Faz três anos que entrei nesta empresa.", false]], "gap": "日本語の べんきょうを はじめて １年{に} なります。", "ja": "日本語の べんきょうを はじめて １年に なります。", "pt": "Faz um ano que comecei a estudar japonês.", "answer": "に", "wrong": ["で", "を"], "why": "に liga a duração a なります na expressão de tempo decorrido."}, {"id": 18, "lesson": 14, "topic": 7, "pattern": "Vて＋も いいですか", "name": "Pedir permissão", "note": "Junte も いいですか à forma て para perguntar se é permitido fazer algo. はい、どうぞ costuma conceder a permissão.", "examples": [["この コンピューターを 使っても いいですか。", "Posso usar este computador?", false], ["ここで お茶を 飲んでも いいですか。", "Posso tomar chá aqui?", false]], "gap": "この へやに {入っても} いいですか。", "ja": "この へやに 入っても いいですか。", "pt": "Posso entrar neste quarto?", "answer": "入っても", "wrong": ["入るも", "入ったも"], "why": "Use 入って, a forma て de 入る, antes de も いいですか."}, {"id": 19, "lesson": 15, "topic": 8, "pattern": "V辞書形＋前に", "name": "Dizer o que você faz antes", "note": "Use a forma de dicionário antes de 前に. A ação após a vírgula acontece primeiro. Se a referência for um substantivo, a construção é Nの 前に.", "examples": [["はしる 前に、たいそうを します。", "Faço ginástica antes de correr.", true], ["ねる 前に、お茶を 飲みます。", "Tomo chá antes de dormir.", false]], "gap": "うんどうを {する} 前に、水を 飲みます。", "ja": "うんどうを する 前に、水を 飲みます。", "pt": "Bebo água antes de me exercitar.", "answer": "する", "wrong": ["した", "します"], "why": "A referência de 前に é する, a forma de dicionário."}, {"id": 20, "lesson": 15, "topic": 8, "pattern": "V辞書形＋と いいです", "name": "Dar uma sugestão", "note": "Coloque と いいです após a forma de dicionário para recomendar uma ação. よ no final dá o tom de sugestão direta.", "examples": [["ねる 前に、たいそうを すると いいですよ。", "É bom fazer ginástica antes de dormir.", true], ["水を 飲むと いいですよ。", "É bom beber água.", false]], "gap": "くびを ゆっくり {まわす}と いいですよ。", "ja": "くびを ゆっくり まわすと いいですよ。", "pt": "É bom girar o pescoço devagar.", "answer": "まわす", "wrong": ["まわして", "まわします"], "why": "Use a forma de dicionário まわす antes de と いいです."}, {"id": 21, "lesson": 15, "topic": 8, "pattern": "Vない＋で ください", "name": "Pedir que alguém evite uma ação", "note": "Acrescente で ください à forma negativa em ない. Essa construção pede que o interlocutor evite a ação.", "examples": [["きゅうに はしらないで ください。", "Por favor, não comece a correr de repente.", false], ["かたを まわさないで ください。", "Por favor, não gire os ombros.", false]], "gap": "あまり お酒を {飲まないで} ください。", "ja": "あまり お酒を 飲まないで ください。", "pt": "Por favor, não beba muito álcool.", "answer": "飲まないで", "wrong": ["飲まなくて", "飲みませんで"], "why": "O pedido negativo usa a forma 飲まない seguida de で ください."}, {"id": 22, "lesson": 16, "topic": 8, "pattern": "Vたり、Vたり＋しています", "name": "Listar exemplos da rotina", "note": "Acrescente り à forma た de cada verbo e termine com しています para falar de hábitos. A lista apresenta exemplos de atividades, e o final indica a rotina atual.", "examples": [["けんこうの ために ヨガを したり、走ったり しています。", "Para cuidar da saúde, faço coisas como ioga e corrida.", true], ["朝、 歩いたり、 およいだり しています。", "De manhã, faço atividades como caminhar e nadar.", false]], "gap": "けんこうの ために、{走ったり}、たいそうを したり しています。", "ja": "けんこうの ために、走ったり、たいそうを したり しています。", "pt": "Para cuidar da saúde, faço coisas como correr e fazer ginástica.", "answer": "走ったり", "wrong": ["走るたり", "走ったて"], "why": "Para a lista ensinada, forme 走ったり com 走った + り."}, {"id": 23, "lesson": 16, "topic": 8, "pattern": "Verbo em forma simples＋人", "name": "Descrever um grupo de pessoas", "note": "Uma oração em forma simples vem antes de 人. 食べる 人 significa “pessoas que comem” e 食べない 人, “pessoas que não comem”.", "examples": [["朝ごはんを 食べない 人は ５人です。", "Cinco pessoas não tomam café da manhã.", false], ["毎日 走る 人は １０人です。", "Dez pessoas correm todos os dias.", false]], "gap": "毎日 スポーツを {する} 人は ２０人です。", "ja": "毎日 スポーツを する 人は ２０人です。", "pt": "Vinte pessoas praticam esporte todos os dias.", "answer": "する", "wrong": ["します", "するの"], "why": "A oração que caracteriza 人 termina na forma simples する."}, {"id": 24, "lesson": 17, "topic": 9, "pattern": "Forma simples＋んです", "name": "Explicar uma situação", "note": "Use んです para dar contexto ou explicar algo que o interlocutor notou. No presente afirmativo, substantivos e adjetivos em な recebem なんです. Verbos e adjetivos em い vão direto a んです.", "examples": [["この かばんは あねに もらったんです。", "É que ganhei esta bolsa da minha irmã mais velha.", true], ["母の 日の プレゼントなんです。", "É que é um presente de Dia das Mães.", false]], "gap": "少し 頭が {いたいんです}。", "ja": "少し 頭が いたいんです。", "pt": "É que estou com um pouco de dor de cabeça.", "answer": "いたいんです", "wrong": ["いたいなんです", "いたいですんです"], "why": "いたい é adjetivo em い. Acrescente んです diretamente a ele."}, {"id": 25, "lesson": 17, "topic": 9, "pattern": "Aは Bに Cを あげます", "name": "Dizer quem dá um presente", "note": "A é quem dá, B é a pessoa que recebe e C é o presente. Use に para marcar o destinatário e を para marcar o objeto.", "examples": [["私は 友だちに 花を あげました。", "Dei flores a uma pessoa amiga.", false], ["母の 日に 母に チョコレートを あげます。", "Vou dar chocolate para minha mãe no Dia das Mães.", false]], "gap": "あね{に} ワインを あげました。", "ja": "あねに ワインを あげました。", "pt": "Dei vinho à minha irmã mais velha.", "answer": "に", "wrong": ["を", "から"], "why": "Com あげる, に marca quem recebe o presente."}, {"id": 26, "lesson": 17, "topic": 9, "pattern": "Bは Aに・から Cを もらいます", "name": "Dizer de quem você recebeu", "note": "B recebe C da pessoa A. Tanto に quanto から podem marcar essa pessoa. から explicita a origem do presente.", "examples": [["たんじょう日に 友だちから 花を もらいました。", "Ganhei flores de uma pessoa amiga no meu aniversário.", false], ["私は あねに 時計を もらいました。", "Ganhei um relógio da minha irmã mais velha.", false]], "gap": "母{から} チョコレートを もらいました。", "ja": "母から チョコレートを もらいました。", "pt": "Ganhei chocolate da minha mãe.", "answer": "から", "wrong": ["を", "で"], "why": "Com もらう, から ou に marca a pessoa de quem veio o presente."}, {"id": 27, "lesson": 17, "topic": 9, "pattern": "Verbo em forma simples＋N", "name": "Descrever um objeto pelo uso", "note": "Coloque a oração em forma simples imediatamente antes do substantivo descrito. O agente dentro dessa oração, se aparecer, pode ser marcado com が.", "examples": [["赤ちゃんが 着る ものを あげました。", "Dei algo para o bebê vestir.", false], ["りょうりの とき 使う ものを もらいました。", "Ganhei algo para usar ao cozinhar.", false]], "gap": "赤ちゃんが {あそぶ} ものを もらいました。", "ja": "赤ちゃんが あそぶ ものを もらいました。", "pt": "Ganhei algo para o bebê brincar.", "answer": "あそぶ", "wrong": ["あそびます", "あそぶの"], "why": "A oração que caracteriza もの termina no verbo em forma simples."}, {"id": 28, "lesson": 18, "topic": 9, "pattern": "Forma simples＋と 思います", "name": "Dar uma opinião", "note": "Coloque o conteúdo da opinião em forma simples antes de と 思います. No presente afirmativo, substantivos e adjetivos em な vêm com だ.", "examples": [["お祝いは パーティーが いいと 思います。", "Acho que uma festa é uma boa ideia para a comemoração.", true], ["プレゼントは 花が いいと 思います。", "Acho que flores são uma boa ideia de presente.", false]], "gap": "友だちは チョコレートが {好きだ}と 思います。", "ja": "友だちは チョコレートが 好きだと 思います。", "pt": "Acho que meu amigo gosta de chocolate.", "answer": "好きだ", "wrong": ["好きです", "好きな"], "why": "好き é adjetivo em な. Na afirmação em forma simples, use 好きだ antes de と."}, {"id": 29, "lesson": 18, "topic": 9, "pattern": "Forma simples＋と 言っていました", "name": "Relatar o que alguém disse", "note": "Use と para introduzir o conteúdo da fala. No relato indireto desta lição, o conteúdo fica em forma simples. Com substantivo ou adjetivo em な no presente afirmativo, use だ.", "examples": [["母は 花が 好きだと 言っていました。", "Minha mãe disse que gosta de flores.", false], ["友だちは パーティーが 楽しかったと 言っていました。", "Uma pessoa amiga disse que a festa foi divertida.", false]], "gap": "友だちは プレゼントが {きにいった}と 言っていました。", "ja": "友だちは プレゼントが きにいったと 言っていました。", "pt": "Uma pessoa amiga disse que gostou do presente.", "answer": "きにいった", "wrong": ["きにいりました", "きにいって"], "why": "No relato indireto, mantenha o passado em forma simples: きにいった."}];
+const EXTRA = [{"id": "NH5", "lesson": 9, "topic": 5, "gap": "日本語は かんじを 読むの{が} むずかしいです。", "ja": "日本語は かんじを 読むのが むずかしいです。", "pt": "É difícil ler kanji em japonês.", "answer": "が", "wrong": ["で", "を"], "why": "Depois de nominalizar a ação com の, use が para marcar o que é difícil."}, {"id": "NH6", "lesson": 11, "topic": 6, "gap": "飲み物は お茶{と} ジュースと、どちらが いいですか。", "ja": "飲み物は お茶と ジュースと、どちらが いいですか。", "pt": "Qual bebida você prefere, chá ou suco?", "answer": "と", "wrong": ["や", "も"], "why": "No padrão da lição, o primeiro と liga as duas opções que どちら compara."}, {"id": "NH7", "lesson": 14, "topic": 7, "gap": "この コンピューターを 使って{も} いいですか。", "ja": "この コンピューターを 使っても いいですか。", "pt": "Posso usar este computador?", "answer": "も", "wrong": ["が", "を"], "why": "A partícula も vem depois da forma て para formar o pedido de permissão."}, {"id": "NH8", "lesson": 15, "topic": 8, "gap": "水を 飲む{と} いいですよ。", "ja": "水を 飲むと いいですよ。", "pt": "É bom beber água.", "answer": "と", "wrong": ["を", "が"], "why": "と liga o verbo na forma de dicionário à sugestão expressa por いいですよ."}, {"id": "NH9", "lesson": 17, "topic": 9, "gap": "友だち{が} 着る シャツを あげました。", "ja": "友だちが 着る シャツを あげました。", "pt": "Dei uma camisa para meu amigo vestir.", "answer": "が", "wrong": ["を", "で"], "why": "が marca 友だち como a pessoa que veste a camisa dentro da oração que descreve シャツ."}];
+
+"use strict";
+const BASE = "https://a2.marugotoweb.jp/en/";
+const TOPICS = [
+  {id:5, name:"Idiomas e culturas", ja:"がいこくごと がいこくぶんか", mark:"語", goal:"Fale sobre o estudo de idiomas, descreva dificuldades e peça ajuda com cortesia."},
+  {id:6, name:"Comer ao ar livre", ja:"そとで 食べる", mark:"食", goal:"Combine o que levar ao piquenique, escolha entre opções e descreva comidas."},
+  {id:7, name:"Viagens a trabalho", ja:"しゅっちょう", mark:"旅", goal:"Conte experiências, descreva um hotel e peça permissão no trabalho."},
+  {id:8, name:"Saúde", ja:"けんこう", mark:"健", goal:"Dê sugestões sobre saúde e descreva hábitos de exercício e alimentação."},
+  {id:9, name:"Comemorações", ja:"おいわい", mark:"祝", goal:"Conte de quem ganhou um presente, dê sua opinião e relate o que alguém disse."}
+];
+const LESSONS = ["Pronúncia e pedidos", "Planos e frequência", "Preparativos do piquenique", "Aparência e sabor", "Experiências e hotel", "Tempo decorrido e permissão", "Cuidados e sugestões", "Hábitos e grupos", "Presentes e explicações", "Opiniões e relatos"];
+const TYPES = {gap:"Completar frases", particle:"Escolher partículas", order:"Ordenar palavras", error:"Identificar erros", translation:"Traduzir frases"};
+const TABS = {grammar:"Gramática", practice:"Exercícios", memory:"Associação"};
+const KEY = "caderno-marugoto-a2-v1";
+const MINUTE = 60_000;
+const DAY = 1440 * MINUTE;
+const INTERVALS = [DAY, 3*DAY, 7*DAY, 14*DAY, 30*DAY, 60*DAY];
+const main = document.querySelector("main");
+const $ = (selector) => document.querySelector(selector);
+const esc = (value) => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const READINGS = {
+  中国語:"ちゅうごくご", 仕事:"しごと", 会社:"かいしゃ", 外国:"がいこく", 日本:"にほん",
+  日本人:"にほんじん", 日本語:"にほんご", 時計:"とけい", 毎日:"まいにち", 英語:"えいご",
+  辞書形:"じしょけい", "１回":"いっかい", "２回":"にかい", "１年":"いちねん", "３年":"さんねん",
+  "５人":"ごにん", "１０人":"じゅうにん", "２０人":"にじゅうにん",
+  人:"ひと", 何:"なん", 使:"つか", 入:"はい", 前:"まえ", 友:"とも", 古:"ふる", 回:"かい",
+  好:"す", 少:"すこ", 思:"おも", 持:"も", 日:"ひ", 書:"か", 月:"げつ", 朝:"あさ",
+  本:"ほん", 来:"き", 楽:"たの", 歩:"ある", 母:"はは", 水:"みず", 物:"もの", 着:"き",
+  祝:"しゅく", 私:"わたし", 花:"はな", 茶:"ちゃ", 行:"い", 言:"い", 話:"はな", 語:"ご",
+  読:"よ", 貸:"か", 赤:"あか", 走:"はし", 週:"しゅう", 酒:"さけ", 頭:"あたま",
+  食:"しょく", 飲:"の", 高:"たか", 健:"けん", 旅:"たび"
+};
+const readingTerms = new RegExp(Object.keys(READINGS).sort((a,b)=>b.length-a.length).join("|"),"gu");
+function annotated(text) {
+  let html="", end=0;
+  for (const match of text.matchAll(readingTerms)) {
+    const term=match[0], at=match.index;
+    const before=text.slice(0,at), after=text[at+term.length];
+    let reading=READINGS[term];
+    if (term==="日" && before.endsWith("たんじょう")) reading="び";
+    if (term==="祝" && after==="い") reading="いわ";
+    if (term==="食" && after==="べ") reading="た";
+    html+=esc(text.slice(end,at))+"<ruby>"+term+"<rt>"+reading+"</rt></ruby>";
+    end=at+term.length;
+  }
+  return html+esc(text.slice(end));
+}
+const jp = (text) => '<span class="jp" lang="ja">'+annotated(text)+'</span>';
+const mixed = (text) => text.split(/([\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}０-９ー]+)/u)
+  .map((part,i)=>i%2?jp(part):esc(part)).join("");
+const link = (href, label, css="btn") => '<a class="'+css+'" href="'+href+'">'+esc(label)+'</a>';
+const action = (name, label, css="btn", attrs="") => '<button type="button" class="'+css+'" data-action="'+name+'" '+attrs+'>'+label+'</button>';
+const source = (path, label) => '<a target="_blank" rel="noopener noreferrer" href="'+BASE+path+'">'+esc(label)+' ↗</a>';
+const ruleSource = (lesson) => "grammar/description/"+String(lesson).padStart(3,"0")+".html";
+const topicPath = (id, tab="grammar") => "#t"+id+"/"+tab;
+const rulesFor = (id) => RULES.filter(rule => rule.topic === id);
+const dayLabel = new Intl.DateTimeFormat("pt-BR",{dateStyle:"medium",timeStyle:"short"});
+const fmt = (time) => dayLabel.format(time);
+const pct = (count,total) => Math.round(count/total*100);
+const normalize = (text) => text.toLocaleLowerCase("pt-BR").normalize("NFD").replace(/\p{M}/gu,"").replace(/[^\p{L}\p{N}\s]/gu,"").replace(/\s+/g," ").trim();
+function shuffle(items) {
+  const copy = [...items];
+  for (let i = copy.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]] = [copy[j],copy[i]];
+  }
+  return copy;
+}
+let availableStorage = true;
+function load() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || "{}");
+    return {done:saved.done || {}, errors:saved.errors || {}, memory:saved.memory || {}, cards:saved.cards || {}, recent:saved.recent || 5};
+  } catch {
+    return {done:{}, errors:{}, memory:{}, cards:{}, recent:5};
+  }
+}
+const saved = load();
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(saved)); }
+  catch { availableStorage = false; }
+}
+const exercises = RULES.flatMap(rule => {
+  const particle = ["が","に","から","でも"].includes(rule.answer);
+  return [particle ? "particle" : "gap","order","error","translation"].map(type => ({id:rule.id+"-"+type, type, rule}));
+}).concat(EXTRA.map(rule=>({id:rule.id,type:"particle",rule})));
+const cards = RULES.flatMap(rule => rule.examples.map(([ja,pt],i) => ({id:rule.id+"-"+i, rule, ja, pt, kind:i===0?"translation":"meaning"})));
+const topicsDone = () => TOPICS.filter(topic => stats(topic.id).complete).length;
+function stats(id) {
+  const list = exercises.filter(q => q.rule.topic === id);
+  const count = list.filter(q => saved.done[q.id]).length;
+  const errors = list.filter(q => saved.errors[q.id]).length;
+  return {count, errors, list, total:list.length, complete:count===list.length && Boolean(saved.memory[id])};
+}
+function due(scope="all", now=Date.now()) {
+  return cards.filter(card => (scope==="all" || card.rule.topic===Number(scope)) && (!saved.cards[card.id] || saved.cards[card.id].due<=now));
+}
+function schedule(previous, correct, now) {
+  const stage = correct ? (Math.min((previous?.stage ?? -1)+1, INTERVALS.length-1)) : -1;
+  return {stage, due:now+(correct ? INTERVALS[stage] : 10*MINUTE)};
+}
+function route() {
+  const [, id, tab] = /^#t([5-9])\/(grammar|practice|memory)$/.exec(location.hash) || [];
+  if (id) return {view:tab, topic:TOPICS.find(t => t.id===Number(id))};
+  return {view:{"#revisao":"review","#progresso":"progress"}[location.hash] || "home"};
+}
+
+let page = route();
+let practice = {filter:"all", lesson:"all", q:null, picks:[], options:[], feedback:null};
+let review = {scope:"all", q:null, options:[], feedback:null};
+let memory = null;
+function onRoute() {
+  page = route();
+  if (page.topic) { saved.recent = page.topic.id; save(); }
+  if (page.view==="practice") {
+    practice = {filter:"all",lesson:"all",q:null,picks:[],options:[],feedback:null};
+    nextPractice();
+  }
+  if (page.view==="memory") startMemory();
+  if (page.view==="review") nextReview();
+  render();
+  window.scrollTo(0,0);
+  main.focus({preventScroll:true});
+}
+function nav() {
+  const navItem = (href, label, active, extra="") => '<a class="nav-link" href="'+href+'" '+(active?'aria-current="page"':'')+'>'+label+extra+'</a>';
+  const pending=due().length;
+  $("#global-nav").innerHTML = navItem("#inicio","Início",page.view==="home")+
+    navItem("#revisao","Revisão espaçada",page.view==="review",'<span class="active-count">'+pending+'</span>')+
+    navItem("#progresso","Progresso",page.view==="progress");
+  $("#topic-nav").innerHTML = TOPICS.map(t => navItem(topicPath(t.id),
+    '<span class="num">0'+t.id+'</span><span class="topic-text">'+esc(t.name)+'</span>',page.topic?.id===t.id,
+    stats(t.id).complete?'<span aria-label="Concluído" class="active-count">✓</span>':'').replace('<a ','<a aria-label="Tópico '+t.id+' — '+t.name+'" ')).join("");
+  $("#sidebar-progress").innerHTML = '<strong>'+topicsDone()+' de 5 tópicos concluídos</strong><progress aria-label="Tópicos concluídos" value="'+topicsDone()+'" max="5"></progress>';
+}
+function home() {
+  return '<header class="hero"><div><p class="eyebrow">Marugoto A2 · Tópicos 5–9</p><h1>Caderno de japonês</h1><p>Estude a gramática em português, pratique com frases em japonês e volte às que precisam de revisão.</p><div class="buttons">'+
+    link(topicPath(saved.recent),"Estudar tópico "+saved.recent,"btn primary")+link("#revisao","Revisar · "+due().length+" cartões","btn outline")+'</div></div><div class="hero-side" aria-hidden="true">'+jp("日本語")+'<small>LIÇÕES 9 A 18</small></div></header>'+
+    '<section aria-labelledby="index-title"><div class="section-head"><h2 id="index-title">Tópicos</h2><small>'+RULES.length+' estruturas gramaticais</small></div><div class="topic-list">'+
+    TOPICS.map(t => {
+      const s=stats(t.id);
+      return '<a class="topic-row" href="'+topicPath(t.id)+'"><span class="tile" aria-hidden="true">'+jp(t.mark)+'</span><div><strong>'+t.id+' · '+esc(t.name)+'</strong><small>'+jp(t.ja)+'</small></div><span class="metric muted">'+(s.complete?"Concluído":s.count+"/"+s.total+" exercícios")+'</span><span class="arrow" aria-hidden="true">→</span></a>';
+    }).join("")+'</div></section><footer class="sources">'+source("","Marugoto Plus A2 · The Japan Foundation")+source("grammar/","Índice oficial de gramática")+'</footer>';
+}
+function topicHead(t, tab) {
+  const first=(t.id-5)*2+9;
+  return '<header class="page-head"><p class="eyebrow">Tópico '+t.id+' · Lições '+first+' e '+(first+1)+'</p><h1>'+esc(t.name)+'</h1><p class="muted">'+jp(t.ja)+'</p><p>'+esc(t.goal)+'</p></header><nav class="tabs" aria-label="Atividades do tópico">'+
+    Object.entries(TABS).map(([key,label]) => '<a class="tab" href="'+topicPath(t.id,key)+'" '+(tab===key?'aria-current="page"':'')+'>'+label+'</a>').join("")+'</nav>';
+}
+function grammar(t) {
+  const rules=rulesFor(t.id);
+  return [...new Set(rules.map(rule=>rule.lesson))].map(lesson =>
+    '<section class="lesson"><div class="lesson-title"><h2>'+lesson+' · '+LESSONS[lesson-9]+'</h2>'+source(ruleSource(lesson),"Notas oficiais")+'</div>'+
+    rules.filter(rule=>rule.lesson===lesson).map((r,i) =>
+      '<details class="card rule rule-tone-'+i+'" '+(i===0?'open':'')+'><summary><span><strong>'+esc(r.name)+'</strong>'+mixed(r.pattern)+'</span></summary><div class="rule-body"><p>'+mixed(r.note)+'</p>'+
+      r.examples.map(([ja,pt,official])=>'<div class="example">'+jp(ja)+'<div>'+esc(pt)+'</div><small>'+(official?source(ruleSource(lesson),"Exemplo do Marugoto Plus"):"Exemplo autoral")+'</small></div>').join("")+
+      '</div></details>').join("")+'</section>'
+  ).join("")+'<div class="buttons">'+link(topicPath(t.id,"practice"),"Praticar este tópico","btn primary")+'</div><footer class="sources">'+source("topic_and_cando_list/topic"+t.id+"/","Objetivos oficiais")+source("vocabulary/list/?topic="+t.id,"Vocabulário oficial")+'</footer>';
+}
+function filterMarkup(label,id, values, selected) {
+  return '<label class="filter" for="'+id+'">'+esc(label)+' <select id="'+id+'">'+values.map(([val,name])=>'<option value="'+val+'" '+(String(val)===selected?"selected":"")+'>'+esc(name)+'</option>').join("")+'</select></label>';
+}
+function practicePool() {
+  return exercises.filter(q => q.rule.topic===page.topic.id &&
+    (practice.filter==="all" || q.type===practice.filter) &&
+    (practice.lesson==="all" || q.rule.lesson===Number(practice.lesson)));
+}
+function nextPractice() {
+  const pool=practicePool();
+  practice.q=practice.replay?.length ? practice.replay.shift() : practice.replay ? null : pool.find(q=>!saved.done[q.id] && q.id!==practice.q?.id) || pool.find(q=>!saved.done[q.id]) || null;
+  practice.feedback=null;
+  practice.picks=[];
+  practice.options=practice.q ? practiceOptions(practice.q) : [];
+}
+function practiceOptions(q) {
+  const r=q.rule;
+  if (q.type==="order") {
+    const chunks=r.examples[1][0].split(" ");
+    return shuffle(chunks.map((_,i)=>i).slice(1));
+  }
+  if (q.type==="error") return shuffle([errorSentence(r),...r.examples.map(([ja])=>ja)]);
+  return shuffle([r.answer,...r.wrong]);
+}
+const errorSentence = r => r.gap.replace(/\{.*?\}/,r.wrong[0]);
+function exerciseProgress(s) {
+  const counts=s.count+" de "+s.total+" acertados · "+s.errors+" a corrigir · "+(s.total-s.count-s.errors)+" por responder";
+  const segments=s.list.map(q=>{
+    const state=saved.done[q.id]?"correct":saved.errors[q.id]?"incorrect":"pending";
+    return '<span class="segment '+state+'"></span>';
+  }).join("");
+  return '<div class="exercise-progress"><div class="exercise-track" role="img" aria-label="'+counts+'">'+
+    segments+'</div><p class="muted exercise-counts" aria-hidden="true">'+counts+'</p></div>';
+}
+function practiceSection(t) {
+  const s=stats(t.id);
+  const lessons=[...new Set(rulesFor(t.id).map(r=>r.lesson))];
+  const pool=practicePool();
+  const toolbar='<div class="toolbar">'+filterMarkup("Formato","practice-filter",[["all","Todos"],...Object.entries(TYPES)],practice.filter)+
+    filterMarkup("Lição","lesson-filter",[["all","Todas"],...lessons.map(i=>[i,"Lição "+i])],practice.lesson)+'</div>'+
+    exerciseProgress(s);
+  if (!pool.length) return toolbar+'<section class="card"><h2>Sem exercícios neste filtro</h2><p>Escolha outro formato ou outra lição.</p></section>';
+  if (!practice.q) {
+    return toolbar+'<section class="card"><h2>Exercícios concluídos</h2><p>Você acertou todas as questões desta seleção.</p><div class="buttons">'+action("practice-replay","Refazer seleção")+
+      link(topicPath(t.id,"memory"),"Jogar associação","btn primary")+'</div></section>';
+  }
+  const q=practice.q, r=q.rule;
+  let body;
+  if (q.type==="order") {
+    const [model,modelPt]=r.examples[1];
+    const words=model.split(" ");
+    body='<p>Ordene os blocos para obter a frase do modelo. O primeiro bloco fica fixo.</p><p class="prompt">'+esc(modelPt)+'</p>'+
+      '<div class="buttons sequence" aria-label="Sequência escolhida"><strong>'+jp(words[0])+'</strong>'+practice.picks.map(i=>action("unpick",jp(words[i]),"btn",'data-index="'+i+'" '+(practice.feedback?"disabled":""))).join("")+'</div>'+
+      '<div class="buttons tokens" aria-label="Blocos disponíveis">'+practice.options.map(i=>action("pick",jp(words[i]),"btn",'data-index="'+i+'" '+(practice.feedback||practice.picks.includes(i)?"disabled":""))).join("")+'</div>'+
+      (!practice.feedback?action("check-order","Conferir ordem","btn primary",practice.picks.length===words.length-1?"":"disabled"):"");
+  } else if (q.type==="translation") {
+    body='<p>Escreva o sentido da frase em português.</p><p class="prompt">'+jp(r.ja)+'</p>'+
+      (!practice.feedback?'<form id="translation-form"><label for="translation">Sua tradução</label><input id="translation" class="answer-input" name="translation" required autocomplete="off"><button class="btn primary">Conferir tradução</button></form>':'<p>Sua tradução: '+esc(practice.feedback.typed)+'</p>');
+  } else if (q.type==="error") {
+    body='<p>Qual frase contém um erro na construção '+jp(r.pattern)+'?</p>'+
+      optionButtons(practice.options,errorSentence(r),practice.feedback,"practice-choice",true);
+  } else {
+    body='<p>Escolha o trecho que preenche a lacuna.</p><p class="prompt">'+jp(r.gap.replace(/\{.*?\}/,"＿＿＿"))+'</p><p class="muted">'+esc(r.pt)+'</p>'+
+      optionButtons(practice.options,r.answer,practice.feedback,"practice-choice",true);
+  }
+  return toolbar+'<section class="card"><p class="eyebrow">'+TYPES[q.type]+' · Lição '+r.lesson+'</p>'+body+
+    (practice.feedback?resultPractice():"")+'</section>';
+}
+function optionButtons(items, answer, feedback, event, japanese=false) {
+  return '<div class="options">'+items.map((option,i) => {
+    const cls=feedback?(option===answer?" correct":feedback.selected===option?" wrong":""):"";
+    const mark=feedback&&option===answer?' <span aria-label="Resposta correta">✓</span>':"";
+    return action(event,(japanese?jp(option):esc(option))+mark,"btn option"+cls,'data-index="'+i+'" '+(feedback?"disabled":""));
+  }).join("")+'</div>';
+}
+function resultPractice() {
+  const r=practice.q.rule, f=practice.feedback;
+  const open=f.typed && !f.correct;
+  const [model,pt]=practice.q.type==="order"?r.examples[1]:[r.ja,r.pt];
+  const title=open?"Compare com a tradução de referência":f.correct?"Correto":"Revise esta construção";
+  return '<div class="feedback '+(f.correct||open?"":"bad")+'" role="status" tabindex="-1"><strong>'+title+'</strong><p>'+jp(model)+' · '+esc(pt)+'</p><p class="short">'+mixed(practice.q.type==="order"?r.note:r.why)+'</p>'+
+    (open?'<p class="short">Se a sua frase preserva o sentido, você pode registrá-la como correta.</p>':'')+'</div><div class="buttons">'+
+    (open?action("accept-translation","Minha tradução tem o mesmo sentido"):"")+
+    (!f.correct?action("practice-retry","Tentar de novo"):"")+
+    action("practice-next",f.correct?"Próximo exercício":"Continuar","btn primary")+"</div>";
+}
+function recordPractice(correct, selected="", typed="") {
+  practice.feedback={correct,selected,typed};
+  if (correct || !typed) gradeExercise(correct);
+  update(".feedback");
+}
+function gradeExercise(correct) {
+  const id=practice.q.id;
+  const [current, previous]=correct?[saved.done,saved.errors]:[saved.errors,saved.done];
+  current[id]=true;
+  delete previous[id];
+  save();
+}
+function confirmTranslationError() {
+  if (practice.feedback?.typed && !practice.feedback.correct) gradeExercise(false);
+}
+function nextReview() {
+  const pending=due(review.scope);
+  pending.sort((a,b)=>(saved.cards[a.id]?.due ?? Infinity)-(saved.cards[b.id]?.due ?? Infinity));
+  review.q=pending[0] || null;
+  review.feedback=null;
+  if (!review.q) return;
+  const c=review.q;
+  const answer= c.kind==="translation" ? c.pt : c.rule.name;
+  const other=rulesFor(c.rule.topic).filter(r=>r.id!==c.rule.id);
+  const alternatives=shuffle([...new Set(other.map(r=>c.kind==="translation"?r.examples[0][1]:r.name))]).slice(0,2);
+  review.options=shuffle([answer,...alternatives]);
+}
+function reviewSection() {
+  const pending=due(review.scope);
+  const c=review.q;
+  let body;
+  if (!c) {
+    const future=cards.filter(card=>(review.scope==="all" || card.rule.topic===Number(review.scope)) && saved.cards[card.id]?.due>Date.now()).map(card=>saved.cards[card.id].due);
+    body='<section class="card"><h2>Fila em dia</h2><p>'+(future.length?"Próxima revisão em "+fmt(Math.min(...future))+".":"Os cartões aparecerão aqui quando estiverem disponíveis.")+'</p>'+action("review-refresh","Atualizar fila")+'</section>';
+  } else {
+    const kind=c.kind==="translation"?"Qual é a tradução mais adequada?":"O que a construção principal expressa?";
+    const feedback=review.feedback;
+    const answer=c.kind==="translation"?c.pt:c.rule.name;
+    body='<section class="card"><p class="eyebrow">Tópico '+c.rule.topic+' · Lição '+c.rule.lesson+'</p><p>'+kind+'</p><p class="prompt">'+jp(c.ja)+'</p>'+
+      optionButtons(review.options,answer,feedback,"review-choice")+
+      (feedback?'<div class="feedback '+(feedback.correct?"":"bad")+'" role="status" tabindex="-1"><strong>'+(feedback.correct?"Correto":"Este cartão volta em 10 minutos")+
+        '</strong><p>'+esc(c.pt)+'</p><p class="short">'+mixed(c.rule.pattern)+' · '+mixed(c.rule.note)+'</p><p class="short">Próxima revisão em '+fmt(saved.cards[c.id].due)+'.</p></div>'+
+        action("review-next","Continuar","btn primary"):"")+'</section>';
+  }
+  return '<header class="page-head"><p class="eyebrow">Marugoto A2</p><h1>Revisão espaçada</h1><p>Identifique a tradução ou o sentido da construção. A fila prioriza cartões já agendados e vencidos.</p></header>'+
+    '<div class="toolbar">'+filterMarkup("Tópico","review-scope",[["all","Todos os tópicos"],...TOPICS.map(t=>[t.id,t.id+" · "+t.name])],review.scope)+
+    '<span class="muted">'+pending.length+' '+(pending.length===1?"cartão disponível":"cartões disponíveis")+'</span></div>'+
+    body;
+}
+function startMemory() {
+  const pairs=shuffle(rulesFor(page.topic.id)).slice(0,4).map(r=>({id:r.id, ja:r.examples[1][0], pt:r.examples[1][1], why:r.note}));
+  const tiles=["ja","pt"].flatMap(lang=>shuffle(pairs).map(pair=>({pair,lang})));
+  memory={tiles, selected:[], matched:[], message:"", miss:false};
+}
+function memorySection() {
+  const m=memory;
+  const columns=[["ja","Japonês"],["pt","Português"]].map(([lang,label])=>{
+    const buttons=m.tiles.map((tile,i)=>{
+      if (tile.lang!==lang) return "";
+      const matched=m.matched.includes(tile.pair.id), selected=m.selected.includes(i);
+      const content=lang==="ja"?jp(tile.pair.ja):esc(tile.pair.pt);
+      const cls=matched?" matched":selected?(m.miss?" miss":" selected"):"";
+      const mark=matched?' <span aria-label="Par encontrado">✓</span>':"";
+      return action("associate",content+mark,"btn memory-tile"+cls,'data-index="'+i+'" aria-pressed="'+(selected||matched)+'" '+(matched?"disabled":""));
+    }).join("");
+    return '<div class="pair-column"><h3>'+label+'</h3>'+buttons+'</div>';
+  }).join("");
+  return '<section class="card"><h2>Jogo de associação</h2><p>Selecione uma frase em japonês e sua tradução em português para formar um par.</p><p class="muted">'+m.matched.length+' de '+m.tiles.length/2+' pares encontrados</p>'+
+    '<div class="memory-grid">'+columns+'</div>'+
+    '<div class="status" role="status" tabindex="-1">'+m.message+'</div><div class="buttons">'+
+    action("memory-reset",m.matched.length===m.tiles.length/2?"Jogar outra rodada":"Embaralhar")+'</div></section>';
+}
+function associate(index) {
+  const m=memory;
+  const tile=m.tiles[index];
+  if (m.matched.includes(tile.pair.id)) return;
+  if (m.miss) { m.selected=[]; m.miss=false; }
+  const alreadySelected=m.selected.includes(index);
+  m.selected=m.selected.filter(i=>m.tiles[i].lang!==tile.lang);
+  if (!alreadySelected) m.selected.push(index);
+  m.message=alreadySelected?"Seleção desfeita.":tile.lang==="ja"?"Selecione a tradução.":"Selecione a frase em japonês.";
+  if (m.selected.length===2) {
+    const first=m.tiles[m.selected[0]];
+    if (first.pair.id===tile.pair.id) {
+      m.matched.push(tile.pair.id);
+      m.selected=[];
+      m.message='<div class="feedback"><strong>Par encontrado</strong><p>'+mixed(tile.pair.why)+'</p></div>';
+      if (m.matched.length===m.tiles.length/2) {
+        saved.memory[page.topic.id]=true;
+        save();
+        m.message+='<p>Rodada concluída. Seu progresso foi registrado.</p>';
+      }
+    } else {
+      m.miss=true;
+      m.message='<div class="feedback bad"><strong>Essas cartas formam pares diferentes</strong><p>Escolha outra carta para tentar novamente.</p></div>';
+    }
+  }
+  const selectedControl='[data-action="associate"][data-index="'+index+'"]';
+  update(m.matched.includes(tile.pair.id)?".status":selectedControl);
+}
+function progress() {
+  const totals=TOPICS.map(t=>stats(t.id));
+  const attempted=Object.keys(saved.cards).length;
+  return '<header class="page-head"><p class="eyebrow">Marugoto A2</p><h1>Meu progresso</h1><p>Um tópico é concluído ao acertar os exercícios e completar uma rodada de associação. As revisões seguem o calendário de cada cartão.</p></header>'+
+    '<div class="summary-grid"><div><strong>'+topicsDone()+'/5</strong>Tópicos concluídos</div><div><strong>'+totals.reduce((a,b)=>a+b.count,0)+'/'+exercises.length+'</strong>Exercícios acertados</div><div><strong>'+attempted+'/'+cards.length+'</strong>Cartões já revisados</div></div>'+
+    TOPICS.map((t,i)=>{
+      const s=totals[i];
+      return '<section class="card"><div class="section-head"><h3>'+t.id+' · '+esc(t.name)+'</h3><strong>'+(s.complete?"Concluído":pct(s.count,s.total)+"% dos exercícios")+'</strong></div>'+
+        '<p class="muted">'+s.count+'/'+s.total+' exercícios · Associação '+(saved.memory[t.id]?"concluída":"pendente")+'</p>'+
+        '<progress aria-label="Exercícios do tópico '+t.id+'" value="'+s.count+'" max="'+s.total+'"></progress><div class="buttons" style="margin-top:15px">'+link(topicPath(t.id,"practice"),"Exercícios")+link(topicPath(t.id,"memory"),"Associação")+'</div></section>';
+    }).join("")+'<p class="muted">O progresso e os prazos ficam salvos neste navegador. Reabra o mesmo arquivo para continuar.</p>';
+}
+function render() {
+  nav();
+  let html;
+  if (page.view==="home") html=home();
+  else if (page.view==="progress") html=progress();
+  else if (page.view==="review") html=reviewSection();
+  else {
+    const t=page.topic;
+    html=topicHead(t,page.view)+({grammar,practice:practiceSection,memory:memorySection}[page.view](t));
+  }
+  main.innerHTML=html+(!availableStorage?'<p role="status" class="feedback bad">Este navegador bloqueou o armazenamento local. O progresso desta sessão pode se perder ao fechar a página.</p>':"");
+}
+function update(focus) {
+  render();
+  if (focus) $(focus)?.focus({preventScroll:true});
+}
+document.addEventListener("change",event=>{
+  const id=event.target.id;
+  if (id==="practice-filter" || id==="lesson-filter") {
+    if (id==="practice-filter") practice.filter=event.target.value;
+    else practice.lesson=event.target.value;
+    practice.replay=null;
+    practice.q=null;
+    nextPractice();
+  } else if (id==="review-scope") {
+    review.scope=event.target.value;
+    nextReview();
+  } else return;
+  update("#"+id);
+});
+document.addEventListener("submit",event=>{
+  if (event.target.id!=="translation-form") return;
+  event.preventDefault();
+  const typed=$("#translation").value.trim();
+  if (!normalize(typed)) { $("#translation").focus(); return; }
+  recordPractice(normalize(typed)===normalize(practice.q.rule.pt),"",typed);
+});
+const handlers={
+  "practice-choice": i=>{
+    const selected=practice.options[i];
+    const q=practice.q;
+    const answer=q.type==="error"?errorSentence(q.rule):q.rule.answer;
+    recordPractice(selected===answer,selected);
+  },
+  "practice-next":()=>{
+    confirmTranslationError();
+    nextPractice(); update(".option:enabled, .tokens button:enabled, #translation, [data-action='practice-replay']");
+  },
+  "practice-retry":()=>{
+    confirmTranslationError();
+    practice.feedback=null;
+    practice.picks=[];
+    practice.options=practiceOptions(practice.q);
+    update(".option:enabled, .tokens button:enabled, #translation");
+  },
+  "practice-replay":()=>{
+    practice.replay=practicePool().slice();
+    nextPractice(); update(".option:enabled, .tokens button:enabled, #translation");
+  },
+  "accept-translation":()=>recordPractice(true,"",practice.feedback.typed),
+  "pick":i=>{
+    practice.picks.push(i);
+    update(practice.picks.length===practice.options.length?"[data-action='check-order']":".tokens button:enabled");
+  },
+  "unpick":i=>{
+    practice.picks=practice.picks.filter(j=>i!==j);
+    update(".tokens [data-index='"+i+"']");
+  },
+  "check-order":()=>recordPractice(practice.picks.every((x,i)=>x===i+1)),
+  "review-choice":i=>{
+    const c=review.q;
+    const selected=review.options[i];
+    const correct=selected===(c.kind==="translation"?c.pt:c.rule.name);
+    saved.cards[c.id]=schedule(saved.cards[c.id],correct,Date.now());
+    save();
+    review.feedback={correct,selected};
+    update(".feedback");
+  },
+  "review-next":()=>{nextReview();update(".option:enabled, [data-action='review-refresh']");},
+  "review-refresh":()=>{nextReview();update(".option:enabled, [data-action='review-refresh']");},
+  "associate":associate,
+  "memory-reset":()=>{startMemory();update(".memory-tile:enabled");}
+};
+document.addEventListener("click",event=>{
+  if (event.target.closest(".skip")) { event.preventDefault(); main.focus(); main.scrollIntoView(); return; }
+  const control=event.target.closest("button[data-action]");
+  if (control && !control.disabled) handlers[control.dataset.action]?.(Number(control.dataset.index));
+});
+window.addEventListener("hashchange",onRoute);
+window.addEventListener("storage",event=>{
+  if (event.key!==KEY) return;
+  Object.assign(saved,load());
+  nav();
+  if (page.view==="home" || page.view==="progress") render();
+});
+save();
+onRoute();
+
+</script>
+</body>
+</html>
